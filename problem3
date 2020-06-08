@@ -1,0 +1,54 @@
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+
+int main() {
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */  
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int b,p,f,c,h,cost=0;
+        cin>>b>>p>>f>>h>>c;
+        if(b>=2)
+        {
+            if(c>=h)
+            {
+                while(f-- && b>=2)
+                {
+                    cost=cost+c;
+                    b=b-2;
+                }
+                while(p-- && b>=2)
+                {
+                    cost=cost+h;
+                    b=b-2;
+                }
+                cout<<cost<<endl;
+            }
+            else
+            {
+                while(p-- && b>=2)
+                {
+                    cost=cost+h;
+                    b=b-2;
+                }
+                while(f-- && b>=2)
+                {
+                    cost=cost+c;
+                    b=b-2;
+                }
+                cout<<cost<<endl;
+            }
+        }
+        else
+        {
+            cout<<0<<endl;
+        }
+    }
+    return 0;
+}
