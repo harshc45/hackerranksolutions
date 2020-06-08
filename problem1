@@ -1,0 +1,44 @@
+a=int(input())
+b=int(input())
+a_arr =[]
+b_arr = []
+while a!=0:
+    a_arr.append(a%10)
+    a = a//10
+while b!=0:
+    b_arr.append(b%10)
+    b = b//10
+
+
+b_arr.reverse()
+a_arr.sort()
+a_arr.reverse()
+    
+if len(a_arr)==len(b_arr):
+
+    for i in range(len(b_arr)):
+        curr = b_arr[i]
+        if curr in a_arr[i:]:
+            unchanged = a_arr[:i]
+            changed = a_arr[i:]
+            changed.remove(curr)
+            changed.insert(0,curr)
+            a_arr.clear()
+            a_arr = unchanged
+            a_arr.extend(changed)
+        else:
+            flag = 0
+            curr -=1
+            while curr!=-1:
+                if curr in a_arr[i:]:
+                    a_arr.remove(curr)
+                    a_arr.insert(i,curr)
+                    flag = 1
+                    break 
+                curr -=1
+            if flag == 1:
+                break
+f = ""
+for i in a_arr:
+    f+= str(i)
+print(f)
